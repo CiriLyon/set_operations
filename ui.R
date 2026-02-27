@@ -8,7 +8,11 @@ library(shinyjs)
 library(openxlsx)
 library(V8)
 
-jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
+jsResetCode <- "
+shinyjs.reloadPage = function(params) {
+  history.go(0);
+}
+"
 
 
 
@@ -18,7 +22,7 @@ fluidPage(#img(src="logo_ciri.png", height = 180, width = 800),
           title = "Set operations & Venn Diagrams GUI",
           theme = shinytheme("slate") ,
           useShinyjs()                     , # Include shinyjs in the UI
-          extendShinyjs(text = jsResetCode),
+          extendShinyjs(text = jsResetCode, functions = c("reloadPage")),
 
           
           fluidRow(
