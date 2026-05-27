@@ -1,6 +1,6 @@
 ui =
   
-  library(VennDiagram)
+library(VennDiagram)
 library(shinythemes)
 library(gplots)
 library(shiny)
@@ -79,6 +79,8 @@ br(), br() ,
                                      actionButton('resetData', 'Reset to start new analysis', icon("refresh"),
                                                   style="color: gold; background-color: #337ab7; border-color: dodgerblue")
                             )
+                            
+                            #actionButton("refresh", "Refresh app")
                             
                             
                           ), # sidebarPanel(
