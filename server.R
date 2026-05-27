@@ -1,26 +1,24 @@
 
 
+library(VennDiagram)
+library(shinythemes)
+library(gplots)
+library(shiny)
+library(shinyjs)
+library(openxlsx)
+library(V8)
+
 server = function(input , output , session){
-  
-  library(VennDiagram)
-  library(shinythemes)
-  library(gplots)
-  library(shiny)
-  library(shinyjs)
-  library(openxlsx)
-  library(V8)
-  
-  jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
-  
-  
-  
-  
-  
+
+   #jsResetCode <- "shinyjs.reset = function() {history.go(0)}"
+
   observeEvent(input$resetData, {
-    js$reset()
+    runjs("location.reload();") #js$reset()
     excel     <<- NULL
     excelDemo <<- NULL
+   
   })
+  
   
   observeEvent(input$boutonUpload ,{
     
