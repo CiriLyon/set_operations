@@ -1,12 +1,23 @@
 
 
-library(VennDiagram)
-library(shinythemes)
-library(gplots)
-library(shiny)
-library(shinyjs)
-library(openxlsx)
-library(V8)
+# library(VennDiagram)
+# library(shinythemes)
+# library(gplots)
+# library(shiny)
+# library(shinyjs)
+# library(openxlsx)
+# library(V8)
+
+packages <- c("shiny", "openxlsx", "VennDiagram", "shinythemes",
+              "gplots" , "shinyjs","V8")
+
+for (pkg in packages) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+  library(pkg, character.only = TRUE)
+}
+
 
 server = function(input , output , session){
 
