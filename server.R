@@ -8,15 +8,32 @@
 # library(openxlsx)
 # library(V8)
 
-packages <- c("shiny", "openxlsx", "VennDiagram", "shinythemes",
-              "gplots" , "shinyjs","V8")
+# packages <- c("shiny", "openxlsx", "VennDiagram", "shinythemes",
+#              "gplots" , "shinyjs","V8")
 
-for (pkg in packages) {
-  if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg)
-  }
-  library(pkg, character.only = TRUE)
+#for (pkg in packages) {
+#  if (!requireNamespace(pkg, quietly = TRUE)) {
+#    install.packages(pkg)
+#  }
+#  library(pkg, character.only = TRUE)
+# }
+
+
+required_pkgs <- c(
+  "shiny",
+  "ggplot2",
+  "dplyr"
+)
+
+missing_pkgs <- required_pkgs[
+  !required_pkgs %in% rownames(installed.packages())
+]
+
+if (length(missing_pkgs) > 0) {
+  install.packages(missing_pkgs, dependencies = TRUE)
 }
+
+lapply(required_pkgs, library, character.only = TRUE)
 
 
 server = function(input , output , session){
