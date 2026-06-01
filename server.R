@@ -19,11 +19,8 @@
 # }
 
 
-required_pkgs <- c(
-  "shiny",
-  "ggplot2",
-  "dplyr"
-)
+required_pkgs <- c("shiny", "openxlsx", "VennDiagram", "shinythemes",
+              "gplots" , "shinyjs","V8")
 
 missing_pkgs <- required_pkgs[
   !required_pkgs %in% rownames(installed.packages())
